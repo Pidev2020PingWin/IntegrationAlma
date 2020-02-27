@@ -1,0 +1,49 @@
+{% extends "@User/Default/index.html.twig" %}
+{%block body%}
+    <center>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    <div class="col-md-7">
+        <fieldset class="table-bordered" style="border: 1px">
+        <div class="form-group">
+            {{ form_start(form, {'attr': { 'class' : 'form-control' , 'style': 'width:550px;'}}) }}
+            <label for="exampleInputEmail1">Titre</label>
+            {{ form_widget(form.titre, {'attr': {'novalidate': 'novalidate'}}) }}
+            <small id="emailHelp" class="form-text text-muted"></small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Contenu</label>
+            {{ form_errors(form.contenu)}}
+            {{ form_widget(form.contenu,{'attr':{'class':'input-form','placeholder':'Contenu'}})}}
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">image</label>
+            {{ form_errors(form.imageFile)}}
+            {{ form_widget(form.imageFile)}}
+        </div>
+        <div class="form-check">
+            <button type="submit" class="btn btn-primary">Modifier</button>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    {{ form_end(form) }}
+    </fieldset>
+
+{%endblock%}

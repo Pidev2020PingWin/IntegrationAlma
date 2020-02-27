@@ -1,0 +1,88 @@
+{% extends "@Admin/Default/back.html.twig" %}
+{%block body%}
+    <div class="md-form mt-0">
+        <th>  <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="search"></th>
+        <center>
+        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+
+            <i class="material-icons">Search</i>
+
+        </button>
+
+        </center>
+
+    </div>
+
+    <div class="tm-cart-table table-responsive">
+    <table class="table table-bordered mb-0" id="tableacc">
+        <thead>
+
+        <tr>
+
+            <th>id</th>
+            <th>titre</th>
+            <th>contenu</th>
+            <th>image</th>
+            <th></th>
+            <th>date</th>
+            <th>action</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        {% for a in article %}
+
+        <tr>
+            <td>{{ a.id}}</td>
+            <td>{{a.titre }}</td>
+            <td>{{ a.contenu|raw }}</td>
+            <td><img width="50" height="50" src="{{ asset('') }}{{ vich_uploader_asset(a, 'imageFile') }}"> <td>
+            <td>{{ a.datepub|date}}</td>
+
+                {% if a.accept == '1' %}
+            <td size="50"><p style="color: green">Accepted</p><a href="{{ path('deleteblog',{id:a.id}) }}"><i class="fa fa-trash"></i> </a></td>
+
+            {% else %}
+                <td><i class="fa fa-check"><a href="{{ path('accept', {'id':a.id})}}">Accept</a></i></td>
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    </div>
+
+
+
+    <script>
+        $(document).ready(function(){
+            $('#search').keyup(function(){
+                search_table($(this).val());
+            });
+            function search_table(value){
+                $('#tableacc tbody tr').each(function(){
+                    var found = 'false';
+                    $(this).each(function(){
+                        if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                        {
+                            found = 'true';
+                        }
+                    });
+                    if(found == 'true')
+                    {
+                        $(this).show();
+
+                    }
+                    else
+                    {
+                        $(this).hide();
+
+                    }
+                });
+            }
+        });
+    </script>
+
+
+{%endblock%}

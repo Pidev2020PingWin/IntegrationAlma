@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
+        <script>
+            Weglot.initialize({
+                api_key: 'wg_4c1b551c11c0e58671f7a17f6b0904244'
+            });
+        </script>
+        {{ weglot_hreflang_render() }}
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
